@@ -116,7 +116,7 @@ def detections_to_coco_annotations(
                     min_image_area_percentage=min_image_area_percentage,
                     max_image_area_percentage=max_image_area_percentage,
                     approximation_percentage=approximation_percentage,
-                )[0].flatten()
+                )
             )
         coco_annotation = {
             "id": annotation_id,
@@ -124,7 +124,7 @@ def detections_to_coco_annotations(
             "category_id": int(class_id),
             "bbox": [xyxy[0], xyxy[1], box_width, box_height],
             "area": box_width * box_height,
-            "segmentation": [polygon] if polygon else [],
+            "segmentation": polygon if polygon else [],
             "iscrowd": 0,
         }
         coco_annotations.append(coco_annotation)
